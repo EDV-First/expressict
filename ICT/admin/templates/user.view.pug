@@ -1,0 +1,10 @@
+extends ./base.pug
+
+block title
+    title Site administrator | #{user.username}
+
+block content
+    p= user.username
+    p= user.password
+    p= user.firstname
+    p= user.lastname

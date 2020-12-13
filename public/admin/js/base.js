@@ -7,3 +7,7 @@ window.addEventListener("scroll",function(){
         $("#header").css("border-bottom", "1px solid #f5e3e085").removeClass("header-shadow")
     }
 })
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});

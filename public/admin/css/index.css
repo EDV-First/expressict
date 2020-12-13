@@ -1,9 +1,14 @@
 #icon-app {
-    color: rgba(255, 255, 255, 0.192);
+    color: rgba(255, 255, 255, 0.13);
 }
 
 #icon-app h2 {
     font-size: 25px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.582);
+    
+}
+
+#icon-app span {
+    color:rgba(255, 255, 255, 0.582);
 }
