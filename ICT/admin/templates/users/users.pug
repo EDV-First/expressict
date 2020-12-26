@@ -1,0 +1,55 @@
+extends ../base.pug
+
+block title
+    title Site administrator | Users
+    link(rel="stylesheet", href="/static/admin/css/users/users1.css")
+
+block content-left
+    .p-5.m-5
+    
+block content
+    .d-flex.justify-content-between
+        input#search.pl-2(type="text", name="search", placeholder='Tìm kiếm')
+        a#newuser.ml-3.btn.text-white(href="/admin/users/create")
+            span Thêm người dùng
+            svg.bi.bi-plus(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                path(fill-rule='evenodd', d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z')  
+    br
+    h1.display-4 Người dùng
+    br
+    section
+        table.table.table-borderless.text-white
+            thead
+                tr
+                    th(scope='col') 
+                        .custom-control.custom-checkbox.pb-2
+                            input#customCheck1.custom-control-input(type='checkbox')
+                            label.custom-control-label(for='customCheck1')
+
+                    th(scope='col')
+                        h5.font-weight-normal Tên đăng nhập
+                    th(scope='col')
+                        h5.font-weight-normal Tên
+                    th(scope='col')
+                        h5.font-weight-normal Họ
+                    th(scope='col')
+                        h5.font-weight-normal Email
+                    th(scope='col')
+                        h5.font-weight-normal Số điện thoại
+            tbody#content-user
+                each user in users
+                    tr
+                        th(scope='row') 
+                            
+                        td 
+                            a(href="/admin/users/" + user._id).text-white=user.username
+                        td= user.firstname
+                        td= user.lastname
+                        td= user.email
+                        td= user.phone
+
+block content-right
+    .p-5.m-5
+
+block footer
+    script(src="/static/admin/js/users/users.js")

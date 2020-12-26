@@ -1,0 +1,38 @@
+extends ./staffs.base.pug
+
+block content-staffs
+    br
+    h1.display-4 Nhân viên
+    br
+
+    section
+        table.table.table-borderless.text-white
+            thead
+                tr
+                    th(scope='col') 
+
+                    th(scope='col')
+                        h5.font-weight-normal Tên đăng nhập
+                    th(scope='col')
+                        h5.font-weight-normal Họ và tên
+                    th(scope='col')
+                        h5.font-weight-normal Email
+                    th(scope='col')
+                        h5.font-weight-normal Số điện thoại
+                    th(scope='col')
+                        h5.font-weight-normal Xếp hạng
+            tbody#content-user
+                each staff in staffs
+                    tr
+                        th(scope='row') 
+                            p ádasd
+                        td 
+                            a(href="/admin/staffs/" + staff._id).text-white=staff.username
+                        td= staff.fullname
+                        td= staff.email
+                        td= staff.phone
+                        td= staff.ranking
+
+block footer 
+    script(src="/static/admin/js/staffs/staffs.list.js")
+    

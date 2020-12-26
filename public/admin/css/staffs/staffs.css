@@ -8,7 +8,6 @@ input[type=text] {
 
 
 #newuser {
-  background-color: rgba(128, 128, 128, 0.192);
   transition: padding-right 0.5s;
 }
 
@@ -37,9 +36,13 @@ input[type=text] {
   /* display: none; */
 }
 
-
 input[type=text]:focus {
   background-color: white;
+}
+
+section {
+  border: 1px solid #f5e3e085;
+  border-radius: 3px;
 }
 
 input, 
@@ -62,12 +65,18 @@ input:focus {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
 }
+  
 
-section {
-  border: 1px solid #f5e3e085;
-  border-radius: 3px;
+#second-menu a {
+  cursor: default;
+  color: rgba(255, 255, 255, 0.726);
 }
 
-table th {
-  font-weight: 400;
+#second-menu .nav-item:hover {
+  background-color: rgba(128, 128, 128, 0.192);
 }
+
+#second-menu .nav-item-color {
+  background-color: #463f3a;
+}
+

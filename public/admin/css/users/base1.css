@@ -22,12 +22,10 @@ body {
 }
 
 #fixed-menu {
-  position: fixed;
-  top: 100px;
-  left: 14px;
-  height: 300px;
   background-color: #202124;
   z-index: 111111;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #fixed-menu a {

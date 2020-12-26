@@ -1,0 +1,50 @@
+extends ../base.pug
+
+block title
+    title Site administrator | Create
+    link(rel="stylesheet", href="/static/admin/css/users/user.create.css")
+
+block content-left
+    .p-5.m-5
+    
+block content
+    h1.display-4 Thêm người dùng
+    if errs 
+        p.text-danger= errs.notification
+                
+    br
+    form(action="", method="post")
+        .form-row
+            .form-group.col-md-3
+                label(for="username") Tên đăng nhập :
+            .form-group.col-md-9
+                input#username.pl-2(type="text", name="username")
+        .form-row
+            .form-group.col-md-3
+                label(for="password") Mật khẩu :
+            .form-group.col-md-9
+                input#password.pl-2(type="password", name="password")
+                small.text-muted Mật khẩu phải chứa ít nhất 8 kí tự.
+                br
+                small.text-muted Mật khẩu không được hoàn toàn bằng số.
+                br
+                small.text-muted Mật khẩu không được quá đơn giản.Vd : 1-9, abc...
+        .form-row
+            .form-group.col-md-3
+                label(for="passwordconfirmation") Nhập lại mật khẩu :
+            .form-group.col-md-9 
+                input#passwordconfirmation.pl-2(type="password", name="passwordconfirmation")
+        .form-row
+            .form-group.col-md-3
+
+            .form-group.col-md-9.text-right 
+                input.btn.btn-primary(type="submit", value="Thêm người dùng")
+        
+
+        
+
+block content-right
+    .p-5.m-5
+
+block footer
+    //- script(src="/static/admin/js/users.js")

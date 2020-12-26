@@ -1,0 +1,75 @@
+extends ../base.pug
+
+block title
+    title Site administrator | Staffs
+    link(rel="stylesheet", href="/static/admin/css/users/user.view.css")
+
+block content-left
+    .p-5.m-5
+    
+block content
+    form(action="", method="post")
+        .form-row
+            .form-group.col-md-2
+                label(for="username") Tên đăng nhập :
+            .form-group.col-md-10
+                input#username.pl-2(type="text", name="username", value= staff.username)
+        .form-row
+            .form-group.col-md-2
+                label(for="password") Password :
+            .form-group.col-md-10
+                p
+                    | #{staff.password}
+                    small 
+                        a.text-primary(href="#") Đổi mật khẩu                    
+        .form-row
+            .form-group.col-md-2
+                label(for="phone") Số điện thoại :
+            .form-group.col-md-10
+                input#phone.pl-2(type="text", name="phone", value= staff.phone)
+        .form-row
+            .form-group.col-md-2
+                label(for="email") Email :
+            .form-group.col-md-10
+                input#email.pl-2(type="email", name="email", value= staff.email)
+        .form-row
+            .form-group.col-md-2
+                label(for="") Giới tính :
+            .form-group.col-md-10
+                //- if user.gender == 'male'
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline1.custom-control-input(type='radio', name='gender', value='male' checked)
+                //-         label.custom-control-label(for='customRadioInline1') Nam
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline2.custom-control-input(type='radio', name='gender', value='female')
+                //-         label.custom-control-label(for='customRadioInline2') Nữ
+                //- else if user.gender == 'female'
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline1.custom-control-input(type='radio', name='gender', value='male')
+                //-         label.custom-control-label(for='customRadioInline1') Nam
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline2.custom-control-input(type='radio', name='gender', value='female' checked)
+                //-         label.custom-control-label(for='customRadioInline2') Nữ
+                //- else
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline1.custom-control-input(type='radio', name='gender', value='male')
+                //-         label.custom-control-label(for='customRadioInline1') Nam
+                //-     .custom-control.custom-radio.custom-control-inline
+                //-         input#customRadioInline2.custom-control-input(type='radio', name='gender', value='female')
+                //-         label.custom-control-label(for='customRadioInline2') Nữ
+        .form-row
+            .form-group.col-md-2
+                label(for="date") Ngày sinh :
+            .form-group.col-md-10
+                input#date.pl-2(type="date", name="dayofbirth", value= staff.dayofbirth)
+        .form-row
+            .form-group.col-md-2
+                
+            .form-group.col-md-10.text-right
+                input(type="submit", value="Lưu").btn.btn-primary
+
+block content-right
+    .p-5.m-5
+
+block footer
+    //- script(src="/static/admin/js/users.js")

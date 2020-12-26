@@ -1,17 +1,18 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const staffSchema = new mongoose.Schema({
     username: String,
-    firstname: String,
-    lastname: String,
+    fullname: String,
     email: String,
     password: String,
     gender: String,
     phone: String,
-    dayofbirth: Date,
+    dayofbirth: String,
+    staffstatus: Boolean,
+    ranking: Number
 })
 
 // const User = mongoose.model('name Model', schema, 'name collection')
-const User = mongoose.model("User", userSchema, "users")
+const Staff = mongoose.model("Staff", staffSchema, "staffs")
 
-module.exports = User
+module.exports = Staff

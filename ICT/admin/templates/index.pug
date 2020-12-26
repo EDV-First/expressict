@@ -2,8 +2,10 @@ extends ./base.pug
 
 block title
     title Site administrator | Home
-    link(rel="stylesheet", href="/static/admin/css/index.css")
+    link(rel="stylesheet", href="/static/admin/css/users/index.css")
 
+block content-left
+    .p-5.m-5
     
 block content
     #icon-app.text-center
@@ -13,3 +15,6 @@ block content
         br
         span Lựa chọn các tác vụ bên trái màn hình &larr;
         h2.display-4 Các tác vụ sẽ được hiển thị tại đây
+
+block content-right
+    .p-5.m-5
