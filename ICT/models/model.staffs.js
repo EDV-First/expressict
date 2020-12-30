@@ -9,7 +9,7 @@ const staffSchema = new mongoose.Schema({
     phone: String,
     dayofbirth: String,
     staffstatus: Boolean,
-    ranking: Number
+    ranking: Number,
 })
 
 // const User = mongoose.model('name Model', schema, 'name collection')

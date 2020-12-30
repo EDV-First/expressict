@@ -10,7 +10,9 @@ block content-staffs
             thead
                 tr
                     th(scope='col') 
-
+                        .custom-control.custom-checkbox.mb-1
+                            input#customControlAutosizing.custom-control-input(type='checkbox')
+                            label.custom-control-label(for='customControlAutosizing')
                     th(scope='col')
                         h5.font-weight-normal Tên đăng nhập
                     th(scope='col')
@@ -25,7 +27,9 @@ block content-staffs
                 each staff in staffs
                     tr
                         th(scope='row') 
-                            p ádasd
+                            .custom-control.custom-checkbox.mb-1
+                                input.custom-control-input(type='checkbox', id = staff._id)
+                                label.custom-control-label(for= staff._id)
                         td 
                             a(href="/admin/staffs/" + staff._id).text-white=staff.username
                         td= staff.fullname

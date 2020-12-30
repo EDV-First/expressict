@@ -1,4 +1,4 @@
-const users = require('../../../models/model.users.js') 
+const staffs = require('../../../../models/model.staffs.js') 
 const bcrypt = require('bcrypt')
 
 module.exports = async (req, res) => {
@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     salt = await bcrypt.genSalt(saltRounds)
     hash = await bcrypt.hash(req.body.password, salt) 
     req.body.password = hash
-    await users.create(req.body)
+    await staffs.create(req.body)
 
-    res.redirect('/admin/users')
+    res.redirect('/admin/staffs/list')
 }

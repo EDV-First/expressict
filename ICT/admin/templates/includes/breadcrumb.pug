@@ -1,0 +1,8 @@
+nav(aria-label='breadcrumb')
+    ol.breadcrumb.bg-dark
+        each bc in breadcrumb
+            if bc.active
+                li.breadcrumb-item.active(aria-current='page')= bc.name 
+            else
+                li.breadcrumb-item
+                    a(href= bc.url).text-white= bc.name
