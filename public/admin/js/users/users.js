@@ -5,4 +5,6 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+
+  $("#users").addClass("nav-item-bgcolor").removeClass("nav-bg");
 });

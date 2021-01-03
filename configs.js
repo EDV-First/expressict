@@ -4,9 +4,8 @@ module.exports = (app, express) => {
     const mongoose = require('mongoose')
     const cookieParser = require('cookie-parser')
 
-
+    // connect to mongodb
     mongoose.connect('mongodb://localhost/expressict', {useNewUrlParser: true, useUnifiedTopology: true});
-
 
     app.use(bodyParser.json()) // for parsing application/json
     app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded

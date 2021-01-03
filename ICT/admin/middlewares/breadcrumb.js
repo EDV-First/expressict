@@ -1,19 +1,16 @@
 module.exports = (req, res, next) => {
-
-    const url = req.originalUrl.split("/")
-    url.shift()
-
+    // url = admin/staff/list
+    const arrayUrl = req.originalUrl.split("/") // ["", "admin", "staff", "list"] 
+    arrayUrl.shift() // ["admin", "staff", "list"] 
     let subUrl = ''
-    let breadcrumb = url.map(nameUrl => {
-        subUrl += `/${nameUrl}`
-        return {url : subUrl, name : nameUrl}
+    let breadcrumb = arrayUrl.map(nameUrl => {
+        subUrl += `/${nameUrl}` // subUrl = "/admin"
+        return {url : subUrl, name : nameUrl} // {url : '/admin', name : "admin"}
     })
+    // now breadcrumb = [{}, {}, ...]
+    breadcrumb[breadcrumb.length - 1].active = true // last obj in breadcrumb add propertie active = true
+    breadcrumb[0].name = "Home" // {url : '/admin', name : "Home"}
 
-    breadcrumb[breadcrumb.length - 1].active = true
-    breadcrumb[0].name = "Home"
-
-    
     res.locals.breadcrumb = breadcrumb
-
     next()
 }

@@ -1,5 +1,5 @@
 nav(aria-label='breadcrumb')
-    ol.breadcrumb.bg-dark
+    ol.breadcrumb(style={background: '#463f3a'})
         each bc in breadcrumb
             if bc.active
                 li.breadcrumb-item.active(aria-current='page')= bc.name 
