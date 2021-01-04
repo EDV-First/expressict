@@ -1,5 +1,5 @@
 # expressict
 
-<a href="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"><img
-  src="https://necolas.github.io/normalize.css/logo.svg" alt="Node Logo"
+<a href="https://github.com/EDV-First/expressict"><img
+  src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node Logo"
   width="80" height="80" align="right"></a>
