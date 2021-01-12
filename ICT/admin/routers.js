@@ -1,52 +1,54 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
+const upload = multer({ dest: 'public/uploads/' })
 
 const index = require('./views/index.js')
 // users get
 const users = require('./views/users/get/users.js')
-const user_view = require('./views/users/get/user.view.js')
-const user_create = require('./views/users/get/user.create.js')
-
+const userView = require('./views/users/get/user.view.js')
+const userCreate = require('./views/users/get/user.create.js')
 // user post
-const user_update = require('./views/users/post/user.update.js')
-const user_create_post = require('./views/users/post/user.create.js')
-
+const userDelete = require('./views/users/post/user.delete.js')
+const userUpdate = require('./views/users/post/user.update.js')
+const userCreatePost = require('./views/users/post/user.create.js')
 // staffs get
-const staffs_list = require("./views/staffs/get/staffs.list.js")
-const staffs_ranking = require("./views/staffs/get/staffs.ranking.js")
-const staffs_title = require("./views/staffs/get/staffs.title.js")
-const staff_view = require("./views/staffs/get/staff.view.js")
-const staff_create = require("./views/staffs/get/staff.create.js")
-
+const staffs = require("./views/staffs/get/staffs.js")
+const staffsRanking = require("./views/staffs/get/staffs.ranking.js")
+const staffsTitle = require("./views/staffs/get/staffs.title.js")
+const staffView = require("./views/staffs/get/staff.view.js")
+const staffCreate = require("./views/staffs/get/staff.create.js")
 // staffs post
-const staff_create_post = require('./views/staffs/post/staff.create.js')
-const staff_update = require("./views/staffs/post/staff.update.js")
-
+const staffCreatePost = require('./views/staffs/post/staff.create.js')
+const staffUpdate = require("./views/staffs/post/staff.update.js")
+const staffDelete = require("./views/staffs/post/staff.delete.js")
 // middlewares
 const breadcrumb = require('./middlewares/breadcrumb.js')
-const validate_create = require('./middlewares/validate.create.js')
-const staff_validate_update = require('./middlewares/validate.staff.update.js')
+const validateCreate = require('./middlewares/validate.create.js')
+const staffValidateUpdate = require('./middlewares/validate.staff.update.js')
 
 
 
 // users
 router.get('/', index)
 router.get('/users', breadcrumb, users)
-router.get('/users/create', breadcrumb, user_create)
-router.get('/users/:id', breadcrumb, user_view)
+router.get('/users/create', breadcrumb, userCreate)
+router.get('/users/:id', breadcrumb, userView)
 
-router.post('/users/create', breadcrumb, validate_create, user_create_post)
-router.post('/users/:id', user_update)
+router.post('/users', userDelete)
+router.post('/users/create', breadcrumb, validateCreate, userCreatePost)
+router.post('/users/:id', userUpdate)
 
 // staffs
-router.get('/staffs/list', breadcrumb, staffs_list)
-router.get('/staffs/ranking', breadcrumb, staffs_ranking)
-router.get('/staffs/title', breadcrumb, staffs_title)
-router.get('/staffs/create', breadcrumb, staff_create)
-router.get('/staffs/:id', breadcrumb, staff_view)
+router.get('/staffs', breadcrumb, staffs)
+router.get('/staffs/ranking', breadcrumb, staffsRanking)
+router.get('/staffs/title', breadcrumb, staffsTitle)
+router.get('/staffs/create', breadcrumb, staffCreate)
+router.get('/staffs/:id', breadcrumb, staffView)
 
-router.post('/staffs/create', breadcrumb, validate_create, staff_create_post)
-router.post('/staffs/:id', breadcrumb, staff_validate_update, breadcrumb, staff_update)
+router.post('/staffs', staffDelete)
+router.post('/staffs/create', breadcrumb, validateCreate, staffCreatePost)
+router.post('/staffs/:id', upload.single('avatar'), breadcrumb, staffValidateUpdate, staffUpdate)
 
 
 module.exports = router

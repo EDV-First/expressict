@@ -12,18 +12,17 @@ const app = express()
 app.use(cookieParser())
 
 // get
-const admin_login = require('./views/get/admin.login.js')
-const admin_logout = require('./views/get/admin.logout.js')
+const adminLogin = require('./views/admin/get/admin.login.js')
+const adminLogout = require('./views/admin/get/admin.logout.js')
 // post
-const post_admin_login = require('./views/post/admin.login.js')
+const adminLoginPost = require('./views/admin/post/admin.login.js')
 // middlewares
 const adminVldLogin = require('./middlewares/admin.vld_login.js')
 
+router.get('/admin', csrfProtection, adminLogin)
+router.get('/logout', adminLogout)
 
-router.get('/admin', csrfProtection, admin_login)
-router.get('/logout', admin_logout)
-
-router.post('/admin', adminVldLogin, parseForm, csrfProtection, post_admin_login)
+router.post('/admin', adminVldLogin, parseForm, csrfProtection, adminLoginPost)
 
 
 module.exports = router

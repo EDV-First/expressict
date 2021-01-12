@@ -1,0 +1,110 @@
+extends ../base.pug
+
+block title
+    title Site administrator | Nhân viên 
+    link(rel="stylesheet", href="/static/admin/css/staffs/staffs.css")
+
+block content-left
+
+block content
+    if notification
+        p.text-success= notification
+    form(action="", method="post")
+        .container-fluid
+            .row
+                .col-lg-7
+                    .row
+                        .col.m-1.bg-theme
+                            include ../includes/breadcrumb.pug
+                .col-lg-5
+                    .row.h-100
+                        .col.m-1.bg-theme.d-flex.flex-row.bd-highlight.align-items-center.justify-content-center
+                            
+
+            .row
+                .col-lg-3
+                    .row.h-100
+                        .col.m-1.d-flex.flex-row.bd-highlight.align-items-center.justify-content-center
+                            .bd-highlight.text-white.p-2#title Nhân viên
+                            
+                .col-lg-3
+                    .row.h-100
+                        .col.m-1.d-flex.flex-row.bd-highlight.align-items-center.justify-content-end.p-0
+                            a.bg-theme.bd-highlight.text-white.p-3.mr-1(href="/admin/staffs/create" data-toggle="tooltip" data-placement="bottom" title="Thêm nhân viên")
+                                svg.bi.bi-person-plus(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z')
+                                    path(fill-rule='evenodd', d='M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z')
+                            a.bg-theme.bd-highlight.text-white.p-3.ml-1.mr-1(href="/admin/staffs" data-toggle="tooltip" data-placement="bottom" title="Danh sách")
+                                svg.bi.bi-journal-text(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z')
+                                    path(d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z')
+                                    path(d='M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z')
+                            a.bg-theme.bd-highlight.text-white.p-3.ml-1.mr-1(href="/admin/staffs/title" data-toggle="tooltip" data-placement="bottom" title="Xếp hạng danh hiệu")
+                                svg.bi.bi-bookmark(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z')
+                            a.bg-theme.bd-highlight.text-white.p-3.ml-1(href="/admin/staffs/ranking" data-toggle="tooltip" data-placement="bottom" title="Xếp hạng thành tích")
+                                svg.bi.bi-bar-chart(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z')
+                .col-lg-6
+                    .row.h-100
+                        .bg-theme.col.m-1.d-flex.flex-row.bd-highlight.align-items-center.justify-content-center
+                            input#search.h-50.w-100.text-white.bd-highlight.m-3(type="text", placeholder='Tìm kiếm')
+
+            .row
+                .col-lg-11
+                    .row
+                        .col.m-1.bg-theme
+                            section
+                                table.table.table-borderless.table-responsive-lg.text-white
+                                    thead
+                                        tr
+                                            th(scope='col') 
+                                                .custom-control.custom-checkbox.mb-1
+                                                    input#customControlAutosizing.custom-control-input(type='checkbox')
+                                                    label.custom-control-label(for='customControlAutosizing')
+                                            th(scope='col')
+                                                h5.font-weight-normal Tên đăng nhập
+                                            th(scope='col')
+                                                h5.font-weight-normal Họ và tên
+                                            th(scope='col')
+                                                h5.font-weight-normal Email
+                                            th(scope='col')
+                                                h5.font-weight-normal Số điện thoại
+                                            th(scope='col').text-center
+                                                h5.font-weight-normal Danh hiệu
+                                            th(scope='col').text-center
+                                                h5.font-weight-normal Staff status
+                                    tbody#content-user
+                                        each staff in staffs
+                                            tr
+                                                th(scope='row') 
+                                                    .custom-control.custom-checkbox.mb-1
+                                                        input.custom-control-input(type='checkbox', id = staff._id, name = staff._id)
+                                                        label.custom-control-label(for= staff._id)
+                                                td 
+                                                    a(href="/admin/staffs/" + staff._id).text-white=staff.username
+                                                td= staff.fullname
+                                                td= staff.email
+                                                td= staff.phone
+                                                td.text-center
+                                                    case staff.ranking
+                                                        when "diamond"
+                                                            svg.bi.bi-gem(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='#c8e7ff', viewbox='0 0 16 16')
+                                                                path(d='M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495L8 13.366l2.532-7.876-5.062.005zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817l5.123-6.83-2.928.002-2.195 6.828z')
+                                                        when "egg"
+                                                            svg.bi.bi-egg(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='currentColor', viewbox='0 0 16 16')
+                                                                path(d='M8 15a5 5 0 0 1-5-5c0-1.956.69-4.286 1.742-6.12.524-.913 1.112-1.658 1.704-2.164C7.044 1.206 7.572 1 8 1c.428 0 .956.206 1.554.716.592.506 1.18 1.251 1.704 2.164C12.31 5.714 13 8.044 13 10a5 5 0 0 1-5 5zm0 1a6 6 0 0 0 6-6c0-4.314-3-10-6-10S2 5.686 2 10a6 6 0 0 0 6 6z')
+                                                td.text-center
+                                                    if staff.staffstatus
+                                                        svg.text-primary.bi.bi-check-circle-fill(xmlns='http://www.w3.org/2000/svg', width='16', height='16', fill='currentColor', viewbox='0 0 16 16')
+                                                            path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z')    
+                .col-lg-1
+                    .row.h-100
+                        .col.m-1.bg-theme.text-center
+                            input(type="submit" value= "Xóa").mt-4.btn.btn-primary.text-white
+                                
+block content-right
+
+block footer 
+    script(src="/static/admin/js/staffs/staffs.list.js")
+    

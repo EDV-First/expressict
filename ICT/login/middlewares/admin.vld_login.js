@@ -45,6 +45,7 @@ module.exports = async (req, res, next) => {
         return
     }
 
-    res.locals.staff = staff
+    res.cookie('_id', staff.id, {signed : true})
+
     next()
 }

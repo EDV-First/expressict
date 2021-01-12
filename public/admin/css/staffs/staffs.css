@@ -1,51 +1,10 @@
+/* Design input */
 input[type=text] {
-  background-color: rgba(128, 128, 128, 0.527);
+  background-color: #26272b;
   border: none;
-  height: 40px;
-  width: 100%;
-  border-radius: 3px;
 }
 
-
-#newuser {
-  transition: padding-right 0.5s;
-}
-
-#newuser:hover {
-  padding-right: 20%;
-  /* width: 100%; */
-}
-
-#newuser span {
-  display: none;
-  transition: opacity 3s;
-}
-
-#newuser:hover span {
-  
-}
-
-#newuser svg {
-  opacity: 1;
-  /* display: block; */
-  transition: opacity 1s 0s;
-}
-
-#newuser:hover svg {
-  opacity: 0;
-  /* display: none; */
-}
-
-input[type=text]:focus {
-  background-color: white;
-}
-
-section {
-  border: 1px solid #f5e3e085;
-  border-radius: 3px;
-}
-
-input, 
+input,button,a,
 input:active, 
 input:focus {  
   outline: 0;  
@@ -53,6 +12,13 @@ input:focus {
   outline-width: 0; 
 } 
 
+input[type=text]:focus {
+  background-color: #26272b;
+  border-bottom: 1px solid white;
+}
+/* /Design input */
+
+/* Placeholder */
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1; /* Firefox */
@@ -65,7 +31,34 @@ input:focus {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
 }
-  
+/* /Placeholder */
+
+/* Form  */
+select {
+  border: none;
+  height: 30px;
+}
+
+button {
+  height: 31px;
+  border: none;
+}
+
+h5 {
+  font-size: 17px;
+}
+
+#title {
+  font-size: 25px;
+}
+
+/* /Form */
+
+/* ---------------------- */
+
+#newuser:hover svg{
+  color: rgba(255, 255, 255, 0.616);
+}
 
 #second-menu a {
   cursor: default;
@@ -79,6 +72,10 @@ input:focus {
 #second-menu .nav-item-color {
   background-color: #463f3a;
 }
+ 
 
 
-/* #463f3a */
+
+.bg-theme {
+  background-color: #26272b;
+}

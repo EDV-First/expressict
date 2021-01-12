@@ -1,3 +1,4 @@
 module.exports = (req, res) => {
-    res.render('./admin/templates/users/user.create.pug')
+    const title = "Thêm người dùng" 
+    res.render('./admin/templates/users/user.create.pug', {title})
 }

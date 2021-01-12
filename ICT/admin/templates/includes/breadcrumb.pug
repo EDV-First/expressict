@@ -1,8 +1,9 @@
-nav(aria-label='breadcrumb')
-    ol.breadcrumb(style={background: '#463f3a'})
+nav(aria-label='breadcrumb').mt-3
+    ol.breadcrumb(style={background: '#26272b'})
         each bc in breadcrumb
             if bc.active
                 li.breadcrumb-item.active(aria-current='page')= bc.name 
             else
                 li.breadcrumb-item
                     a(href= bc.url).text-white= bc.name
+

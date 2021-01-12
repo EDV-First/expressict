@@ -7,6 +7,8 @@ module.exports = async (req, res) => {
     hash = await bcrypt.hash(req.body.password, salt) 
     req.body.password = hash
     await Staffs.create(req.body)
-
-    res.redirect('/admin/staffs/list')
+    // const staffs = await Staffs.find()
+    // const notification = "Tài khoản đã được tạo thành công"
+    // res.render("./admin/templates/staffs/staffs.pug", {notification, staffs})
+    res.redirect("/admin/staffs")
 }

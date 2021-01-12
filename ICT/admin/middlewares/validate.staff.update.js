@@ -5,7 +5,6 @@ module.exports = async (req, res, next) => {
     const someStaff = await Staff.findOne({username : req.body.username})
     const values = req.body
     let err;
-
     req.body.username = req.body.username.trim()
 
     if (req.body.username.indexOf(" ") !== -1) {

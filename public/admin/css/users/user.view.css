@@ -35,3 +35,7 @@ input[type=number]:focus {
   background-color: white;
   color: black;
 }
+
+.bg-theme {
+  background-color: #26272b;
+}

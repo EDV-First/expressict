@@ -10,7 +10,9 @@ const staffSchema = new mongoose.Schema({
     dayofbirth: String,
     staffstatus: Boolean,
     ranking: String,
-    scores: {default : 0, type : Number}
+    scores: {default : 0, type : Number},
+    avatar: String,
+    datecreated: String
 })
 
 // const User = mongoose.model('name Model', schema, 'name collection')

@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
         return
     }
 
-    res.locals.staff = checkStaff
+    res.locals.thisStaff = checkStaff
     
     next()
 }
