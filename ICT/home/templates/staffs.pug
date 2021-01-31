@@ -1,0 +1,24 @@
+extends ./base.pug
+
+block title
+    title ExpressIct | Staffs
+    link(rel="stylesheet", href="/static/home/css/staffs.css")
+block content   
+    br
+    each staff in staffs
+        .row
+            .col-md
+                .card.mb-2(style='max-width: 540px;').border-0
+                    .row.no-gutters
+                        .col-md-4
+                            img.card-img.h-100(src=staff.avatar, alt='...')
+                        .col-md-8
+                            .card-body
+                                h5.card-title= staff.fullname
+                                p.card-text
+                                | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                p.card-text
+                                small.text-muted Last updated 3 mins ago
+    
+block footer
+    

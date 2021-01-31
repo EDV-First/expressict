@@ -1,0 +1,79 @@
+input, 
+input:active, 
+input:focus {  
+  outline: 0;  
+  outline-style: none;  
+  outline-width: 0; 
+} 
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+input[type=text], 
+input[type=email], 
+input[type=date], 
+input[type=number], 
+input[type=password] {
+  background-color: rgba(128, 128, 128, 0.527);
+  border: none;
+  height: 35px;
+  width: 100%;
+  border-radius: 3px;
+  color: white;
+}
+
+input[type=password]:focus,
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+input[type=number]:focus {
+  background-color: white;
+  color: black;
+}
+
+.bg-theme {
+  background-color: #26272b;
+}
+
+/* input file */
+
+.input-file-trigger {
+  border-radius: 3px;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.527);
+}
+.input-file {
+  position: absolute;
+  top: 0; left: 0;
+  width: 225px;
+  opacity: 0;
+  cursor: pointer;
+}
+.input-file:hover + .input-file-trigger,
+.input-file:focus + .input-file-trigger,
+.input-file-trigger:hover,
+.input-file-trigger:focus {
+  background: rgb(128, 128, 128);
+}
+/* .file-return {
+  
+} */
+.file-return:not(:empty):before {
+  content: "File url: ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* /input file */

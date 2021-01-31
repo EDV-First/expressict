@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     gender: String,
     phone: String,
     dayofbirth: String,
+    avatar: String
 })
 
 // const User = mongoose.model('name Model', schema, 'name collection')

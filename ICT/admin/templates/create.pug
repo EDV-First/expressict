@@ -1,0 +1,57 @@
+extends ./base.pug
+
+block title
+    title Site administrator | Create
+    link(rel="stylesheet", href="/static/admin/css/create.css")
+    link(rel="stylesheet", href="/static/admin/css/css_component/bg.css")
+    link(rel="stylesheet", href="/static/admin/css/css_component/input.css")
+
+block content
+    br
+    .row
+        .col-md
+            .row
+                .col-md.m-1.bg-theme
+                    include ./includes/breadcrumb.pug
+    if err
+        .row
+            .col-md
+                .row
+                    .col-md.m-1.p-2
+                        .text-danger
+                            svg.bi.bi-x-octagon-fill(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
+                                path(d='M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z')
+
+                            span.m-2=err
+                        
+    .row
+        .col-md
+            .row
+                .col-md.m-1.p-3.bg-theme
+                    form(action="", method="post")
+                        .form-row
+                            .form-group.col-md-3
+                                label(for="username") Tên đăng nhập :
+                            .form-group.col-md-9
+                                input#username.pl-2(type="text", name="username")
+                        .form-row
+                            .form-group.col-md-3
+                                label(for="password") Mật khẩu :
+                            .form-group.col-md-9
+                                input#password.pl-2(type="password", name="password")
+                                
+                                small.text-muted Mật khẩu phải chứa ít nhất 8 kí tự.
+                                br
+                                small.text-muted Mật khẩu không được hoàn toàn bằng số.
+                                br
+                                small.text-muted Mật khẩu không được quá đơn giản.Vd : 1-9, abc...
+                        .form-row
+                            .form-group.col-md-3
+                                label(for="passwordconfirmation") Nhập lại mật khẩu :
+                            .form-group.col-md-9 
+                                input#passwordconfirmation.pl-2(type="password", name="passwordconfirmation")
+                        .form-row
+                            .form-group.col-md-3
+
+                            .form-group.col-md-9.text-right 
+                                input.btn.btn-primary(type="submit", value=title)

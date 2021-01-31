@@ -2,13 +2,10 @@ extends ../base.pug
 
 block title
     title Site administrator | #{staff.fullname}
-    link(rel="stylesheet", href="/static/admin/css/users/user.view.css")
-
-block content-left
-    .p-5.m-5
+    link(rel="stylesheet", href="/static/admin/css/css_component/input.css")
     
 block content
-
+    br
     .container-fluid
         .row
             .col
@@ -16,170 +13,148 @@ block content
                     .col-lg.m-1.bg-theme
                         include ../includes/breadcrumb.pug
         .row
-            .col-lg-10
+            .col-lg
                 .row
-                    .col.m-1.bg-theme.p-0
-                        .card.border-0(style='max-width: 540px;background-color: #26272b')
-                            .row.no-gutters
-                                .col-md-4
-                                    img.card-img(src=staff.avatar, alt='Ảnh đại diện')
-                                .col-md-8
-                                    .card-body
-                                        h5.card-title #{staff.fullname}
-                                            span 
-                                                if staff.staffstatus
-                                                    svg.text-primary.bi.bi-check-circle-fill(xmlns='http://www.w3.org/2000/svg', width='16', height='16', fill='currentColor', viewbox='0 0 16 16')
-                                                        path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z')    
-                                        p.card-text ...
-                                        p.card-text
-                                            small.text-muted Cập nhập lần cuối : 3 phút trước
-            .col-lg-2
-                .row
-                    .col.m-1.bg-theme.d-flex.flex-row.bd-highlight.align-items-center.justify-content-center
-                        p ...
+                    .col.m-1.bg-theme              
+                        if err
+                            p.text-danger= err
 
-    //- 
-    //- if err
-    //-     p.text-danger= err
+                        form.p-2(action="" method="post" enctype="multipart/form-data")
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="username") Tên đăng nhập :
+                                .form-group.col-md-10
+                                    input#username.pl-2(
+                                        type="text" 
+                                        name="username"
+                                        value= values ? values.username : staff.username
+                                    )
+                                    input(
+                                        type="hidden"
+                                        name="_id" 
+                                        value=staff._id
+                                    )
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="password") Password :
+                                .form-group.col-md-10
+                                    p= staff.password 
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="fullname") Họ và tên :
+                                .form-group.col-md-10
+                                    input#fullname.pl-2(
+                                        type="text"
+                                        name="fullname"
+                                        value= values ? values.fullname : staff.fullname
+                                    )                 
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="phone") Số điện thoại :
+                                .form-group.col-md-10
+                                    input#phone.pl-2(
+                                        type="text" 
+                                        name="phone" 
+                                        maxlength=10 
+                                        value= values ? values.phone : staff.phone
+                                    )
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="email") Email :
+                                .form-group.col-md-10
+                                    input#email.pl-2(
+                                        type="email"
+                                        name="email"
+                                        value= values ? values.email : staff.email
+                                    )
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="") Giới tính :
+                                .form-group.col-md-10
+                                    .custom-control.custom-radio
+                                        input.custom-control-input(
+                                            type='radio'
+                                            id="male"
+                                            name="gender"
+                                            value="male" 
+                                            checked=staff.gender=="male" ? true : false
+                                        )
+                                        label.custom-control-label(for= "male") Nam
+                                    .custom-control.custom-radio
+                                        input.custom-control-input(
+                                            type='radio'
+                                            id="female"
+                                            name="gender"
+                                            value="female" 
+                                            checked=staff.gender=="female" ? true : false
+                                        )
+                                        label.custom-control-label(for= "female") Nữ
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="date") Ngày sinh :
+                                .form-group.col-md-10
+                                    input#date.pl-2(type="date" name="dayofbirth" value= staff.dayofbirth)
 
-    //- form(action="" method="post" enctype="multipart/form-data")
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="username") Tên đăng nhập :
-    //-         .form-group.col-md-10
-    //-             input#username.pl-2(
-    //-                 type="text" 
-    //-                 name="username"
-    //-                 value= values ? values.username : staff.username
-    //-             )
-    //-             input(
-    //-                 type="hidden"
-    //-                 name="_id" 
-    //-                 value=staff._id
-    //-             )
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="password") Password :
-    //-         .form-group.col-md-10
-    //-             p= staff.password 
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="fullname") Họ và tên :
-    //-         .form-group.col-md-10
-    //-             input#fullname.pl-2(
-    //-                 type="text"
-    //-                 name="fullname"
-    //-                 value= values ? values.fullname : staff.fullname
-    //-             )                 
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="phone") Số điện thoại :
-    //-         .form-group.col-md-10
-    //-             input#phone.pl-2(
-    //-                 type="text" 
-    //-                 name="phone" 
-    //-                 maxlength=10 
-    //-                 value= values ? values.phone : staff.phone
-    //-             )
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="email") Email :
-    //-         .form-group.col-md-10
-    //-             input#email.pl-2(
-    //-                 type="email"
-    //-                 name="email"
-    //-                 value= values ? values.email : staff.email
-    //-             )
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="") Giới tính :
-    //-         .form-group.col-md-10
-    //-             .custom-control.custom-radio
-    //-                 input.custom-control-input(
-    //-                     type='radio'
-    //-                     id="male"
-    //-                     name="gender"
-    //-                     value="male" 
-    //-                     checked=staff.gender=="male" ? true : false
-    //-                 )
-    //-                 label.custom-control-label(for= "male") Nam
-    //-             .custom-control.custom-radio
-    //-                 input.custom-control-input(
-    //-                     type='radio'
-    //-                     id="female"
-    //-                     name="gender"
-    //-                     value="female" 
-    //-                     checked=staff.gender=="female" ? true : false
-    //-                 )
-    //-                 label.custom-control-label(for= "female") Nữ
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="date") Ngày sinh :
-    //-         .form-group.col-md-10
-    //-             input#date.pl-2(type="date" name="dayofbirth" value= staff.dayofbirth)
+                            hr.bg-secondary
 
-    //-     hr.bg-secondary
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="scores") Điểm số :
+                                .form-group.col-md-10
+                                    input#scores.pl-2(type="number" name="scores" value= staff.scores)
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="ranking") Xếp hạng :
+                                .form-group.col-md-10
+                                    .custom-control.custom-radio
+                                        input.custom-control-input(
+                                            type='radio' 
+                                            id="diamond" 
+                                            name="ranking" 
+                                            value="diamond" 
+                                            checked= staff.ranking=="diamond" ? true : false
+                                        )
+                                        label.custom-control-label(for= "diamond") Diamond 
+                                            svg.bi.bi-gem(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='#c8e7ff', viewbox='0 0 16 16')
+                                                path(d='M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495L8 13.366l2.532-7.876-5.062.005zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817l5.123-6.83-2.928.002-2.195 6.828z')
+                                    .custom-control.custom-radio
+                                        input.custom-control-input(
+                                            type='radio'
+                                            id="egg" 
+                                            name="ranking"
+                                            value="egg" 
+                                            checked= staff.ranking=="egg" ? true : false
+                                        )
+                                        label.custom-control-label(for= "egg") Egg 
+                                            svg.bi.bi-egg(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='currentColor', viewbox='0 0 16 16')
+                                                path(d='M8 15a5 5 0 0 1-5-5c0-1.956.69-4.286 1.742-6.12.524-.913 1.112-1.658 1.704-2.164C7.044 1.206 7.572 1 8 1c.428 0 .956.206 1.554.716.592.506 1.18 1.251 1.704 2.164C12.31 5.714 13 8.044 13 10a5 5 0 0 1-5 5zm0 1a6 6 0 0 0 6-6c0-4.314-3-10-6-10S2 5.686 2 10a6 6 0 0 0 6 6z')
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="") Ảnh đại diện :
+                                .form-group.col-md-10
+                                    input.pl-2.input-file#my-file(type="file" name="avatar")
+                                    label.pl-1.input-file-trigger(tabindex='0', for='my-file') Chọn file...
+                                    p.file-return= staff.avatar
+                            hr.bg-secondary
+                            .form-row
+                                .form-group.col-md-2
+                                    label(for="") Quyền admin :
+                                .form-group.col-md-10
+                                    .custom-control.custom-checkbox.mb-1
+                                        input#staffstatus.custom-control-input(
+                                            type='checkbox' 
+                                            name="staffstatus" 
+                                            checked= staff.staffstatus ? true : false
+                                        )
+                                        label.custom-control-label(for="staffstatus") 
 
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="scores") Điểm số :
-    //-         .form-group.col-md-10
-    //-             input#scores.pl-2(type="number" name="scores" value= staff.scores)
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="ranking") Xếp hạng :
-    //-         .form-group.col-md-10
-    //-             .custom-control.custom-radio
-    //-                 input.custom-control-input(
-    //-                     type='radio' 
-    //-                     id="diamond" 
-    //-                     name="ranking" 
-    //-                     value="diamond" 
-    //-                     checked= staff.ranking=="diamond" ? true : false
-    //-                 )
-    //-                 label.custom-control-label(for= "diamond") Diamond 
-    //-                     svg.bi.bi-gem(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='#c8e7ff', viewbox='0 0 16 16')
-    //-                         path(d='M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495L8 13.366l2.532-7.876-5.062.005zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817l5.123-6.83-2.928.002-2.195 6.828z')
-    //-             .custom-control.custom-radio
-    //-                 input.custom-control-input(
-    //-                     type='radio'
-    //-                     id="egg" 
-    //-                     name="ranking"
-    //-                     value="egg" 
-    //-                     checked= staff.ranking=="egg" ? true : false
-    //-                 )
-    //-                 label.custom-control-label(for= "egg") Egg 
-    //-                     svg.bi.bi-egg(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='currentColor', viewbox='0 0 16 16')
-    //-                         path(d='M8 15a5 5 0 0 1-5-5c0-1.956.69-4.286 1.742-6.12.524-.913 1.112-1.658 1.704-2.164C7.044 1.206 7.572 1 8 1c.428 0 .956.206 1.554.716.592.506 1.18 1.251 1.704 2.164C12.31 5.714 13 8.044 13 10a5 5 0 0 1-5 5zm0 1a6 6 0 0 0 6-6c0-4.314-3-10-6-10S2 5.686 2 10a6 6 0 0 0 6 6z')
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="") Ảnh đại diện :
-    //-         .form-group.col-md-10
-    //-             input.pl-2(type="file" name="avatar")
-
-    //-     hr.bg-secondary
-    //-     .form-row
-    //-         .form-group.col-md-2
-    //-             label(for="") Quyền admin :
-    //-         .form-group.col-md-10
-    //-             .custom-control.custom-checkbox.mb-1
-    //-                 input#staffstatus.custom-control-input(
-    //-                     type='checkbox' 
-    //-                     name="staffstatus" 
-    //-                     checked= staff.staffstatus ? true : false
-    //-                 )
-    //-                 label.custom-control-label(for="staffstatus") 
-
-    //-     hr.bg-secondary
-        
-    //-     .form-row
-    //-         .form-group.col-md-2
-                
-    //-         .form-group.col-md-10.text-right
-    //-             input(type="submit", value="Lưu").btn.btn-primary
-
-block content-right
-    .p-5.m-5
+                            hr.bg-secondary
+                            
+                            .form-row
+                                .form-group.col-md-2
+                                    
+                                .form-group.col-md-10.text-right
+                                    input.btn.btn-primary(type="submit", value="Lưu")
 
 block footer
-    //- script(src="/static/admin/js/users.js")
+    script(src="/static/admin/js/staffs/staff.view.js")

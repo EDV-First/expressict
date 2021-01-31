@@ -1,0 +1,54 @@
+body {
+    background-color: white;
+}
+
+/* .sidebar{
+    min-height: calc(100vh - 41px);
+} */
+
+@media only screen and (max-width: 768px) {
+    .sidebar{
+        /* min-height: calc(0vh - 41px); */
+        display: none;
+    }
+}
+
+.header-shadow {
+  box-shadow: 5px 5px 8px rgba(207, 207, 207, 0.404);
+}
+
+.circle-radius:hover {
+  background-color: rgba(128, 128, 128, 0.719);
+  border-radius: 100%;
+}
+
+nav {
+  background-color: white;
+}
+
+h1, #titlesmall {
+    letter-spacing: 10px;
+}
+
+/* Design Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border-left: 1.5px solid rgba(0, 0, 0, 0.151); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

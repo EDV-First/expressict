@@ -1,0 +1,16 @@
+input[type=text],
+input[type=password]
+{
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input[type=submit]
+{
+    border: none;
+}
+
+input
+{
+    outline:none;
+}

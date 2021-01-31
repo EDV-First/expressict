@@ -1,14 +1,16 @@
 const Staffs = require('../../../../models/model.staffs.js') 
 const bcrypt = require('bcrypt')
+const querystring = require('querystring')
 
 module.exports = async (req, res) => {
-    const saltRounds = 10
-    salt = await bcrypt.genSalt(saltRounds)
+    salt = await bcrypt.genSalt(10)
     hash = await bcrypt.hash(req.body.password, salt) 
     req.body.password = hash
     await Staffs.create(req.body)
-    // const staffs = await Staffs.find()
-    // const notification = "Tài khoản đã được tạo thành công"
-    // res.render("./admin/templates/staffs/staffs.pug", {notification, staffs})
-    res.redirect("/admin/staffs")
+
+    const query = querystring.stringify({
+        notification:"Tạo tài khoản thành công !"
+    });
+    
+    res.redirect(`/admin/staffs/?${query}`)
 }

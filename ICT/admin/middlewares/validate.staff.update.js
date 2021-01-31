@@ -7,24 +7,24 @@ module.exports = async (req, res, next) => {
     let err;
     req.body.username = req.body.username.trim()
 
-    if (req.body.username.indexOf(" ") !== -1) {
+    if ( req.body.username.indexOf(" ") !== -1 ) {
         err = 'Tên tài khoản không được có khoảng trắng !'
         res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
         return
     }
-    if (req.body.username === "") {
+    if ( req.body.username === "" ) {
         err = 'Tên tài khoản không được để trống !'
         res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
         return
     }
-    if (someStaff) {
-        if (req.body.username == someStaff.username && req.body._id != someStaff._id) {
+    if ( someStaff ) {
+        if ( req.body.username == someStaff.username && req.body._id != someStaff._id ) {
             err = 'Tên tài khoản đã được sử dụng !'
             res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
             return
         }
     }
-    if (req.body.fullname === "") {
+    if ( req.body.fullname === "" ) {
         err = 'Tên không được để trống !'
         res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
         return
@@ -38,12 +38,12 @@ module.exports = async (req, res, next) => {
                         .map(x => `${x[0].toUpperCase()}${x.slice(1)}`)
                         .join(" ")
 
-    if (req.body.phone === "") {
+    if ( req.body.phone === "" ) {
         err = 'Số điện thoại không được để trống !'
         res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
         return
     }
-    if (req.body.phone[0] != 0) {
+    if ( req.body.phone[0] != 0 ) {
         err = 'Số điện thoại không hợp lệ !'
         res.render('./admin/templates/staffs/staff.view.pug', {err, staff, values})
         return

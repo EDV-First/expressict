@@ -1,5 +1,6 @@
 const Users = require('../../../../models/model.users.js') 
 const bcrypt = require('bcrypt')
+const querystring = require('querystring')
 
 module.exports = async (req, res) => {
     const saltRounds = 10
@@ -8,5 +9,9 @@ module.exports = async (req, res) => {
     req.body.password = hash
     await Users.create(req.body)
 
-    res.redirect('/admin/users')
+    const query = querystring.stringify({
+        notification:"Tạo tài khoản thành công !"
+    });
+
+    res.redirect(`/admin/users/?${query}`)
 }

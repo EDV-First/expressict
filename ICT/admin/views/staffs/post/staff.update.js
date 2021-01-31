@@ -8,7 +8,10 @@ module.exports = async (req, res) => {
     const dateNowJson = await dateNow.json()
     const getDate = dateNowJson.datetime.split("T")
     req.body.datecreated = getDate[0]
-    req.body.avatar = `/static/${req.file.path.split("\\").slice(1).join("/")}` 
+    if ( req.body.avatar ) {
+        req.body.avatar = `/static/${req.file.path.split("\\").slice(1).join("/")}` 
+    }
+    
     await Staff.updateOne({_id : req.params.id}, req.body)
 
     res.redirect('/admin/staffs')

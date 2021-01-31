@@ -8,66 +8,56 @@ html(lang="en")
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
 
-        link(rel="stylesheet", href="/static/admin/css/base1.css")
+        link(rel="stylesheet" href="/static/admin/css/base.css")
         block title
 
     body.text-white
         //- Header
-        header.position-sticky(style={ top:'0'})
-            .d-flex.justify-content-between.align-items-center.m-1
+        header.position-sticky(style={ top:'0' })
+            .d-flex.justify-content-between.align-items-center
                 .ml-3.p-1
                     svg.bi.bi-list(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
                         path(fill-rule='evenodd', d='M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z')
 
                 .d-flex.flex-row.bd-highlight.align-items-center              
-                    a(href="/admin/staffs/" + thisStaff._id).p-1.m-1.bd-highlight.circle-radius
+                    a(href="/admin/staffs/" + thisStaff._id data-toggle="tooltip" data-placement="bottom" title= thisStaff.username).p-1.m-1.bd-highlight.circle-radius
                         if thisStaff.avatar
                             img.rounded-circle(src=thisStaff.avatar, alt="", width="30", height="30")
                         else
-                            svg.rounded-circle(width='30', height='30', viewbox='0 0 264 264', fill='none', xmlns='http://www.w3.org/2000/svg')
-                                rect(width='264', height='264', fill='#463f3a')
-                                path(d='M157.031 145.5C148.875 145.5 145.219 150 132 150C118.5 150 114.844 145.5 106.688 145.5C85.875 145.5 69 162.656 69 183.469V190.5C69 198.094 74.9062 204 82.5 204H181.5C188.812 204 195 198.094 195 190.5V183.469C195 162.656 177.844 145.5 157.031 145.5ZM181.5 190.5H82.5V183.469C82.5 169.969 93.1875 159 106.688 159C110.906 159 117.375 163.5 132 163.5C146.344 163.5 152.812 159 157.031 159C170.531 159 181.5 169.969 181.5 183.469V190.5ZM132 141C154.219 141 172.5 123 172.5 100.5C172.5 78.2812 154.219 60 132 60C109.5 60 91.5 78.2812 91.5 100.5C91.5 123 109.5 141 132 141ZM132 73.5C146.625 73.5 159 85.875 159 100.5C159 115.406 146.625 127.5 132 127.5C117.094 127.5 105 115.406 105 100.5C105 85.875 117.094 73.5 132 73.5Z', fill='rgba(255, 255, 255, 0.726)')
-                    
-                    a(href="/login/logout").p-1.m-1.bd-highlight.text-white
-                        svg.bi.bi-arrow-return-right(xmlns='http://www.w3.org/2000/svg', width='18', height='18', fill='currentColor', viewbox='0 0 16 16')
-                            path(fill-rule='evenodd', d='M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z')
+                            svg.p-1.base-color.rounded-circle.bi.bi-person(xmlns='http://www.w3.org/2000/svg', width='30', height='30', fill='currentColor', viewbox='0 0 16 16')
+                                path(d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z')                  
+                    span.mr-2 /
+                    a.text-muted(href="/admin/staffs/" + thisStaff._id + "/change_password")
+                        small Đổi mật khẩu 
+                    span.ml-2 / 
+                    a.p-1.m-1.bd-highlight.text-muted(href="/login/logout")
+                        small Đăng xuất
 
-                                          
-        //- Left Menu 
-        .d-flex.bd-highlight
-            .p-2.bd-highlight
-                br
-                #fixed-menu.position-sticky(style={ top:'14.7%'})
-                    .d-flex.flex-column.bd-highlight
-                        a.nav-bg#staffs.mb-1.p-3(href="/admin/staffs" data-toggle="tooltip" data-placement="right" title="Nhân viên")
-                            svg.bi.bi-people(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
-                                path(d='M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z')
-                        a.nav-bg#service.mb-1.p-3(href="#" data-toggle="tooltip" data-placement="right" title="Dịch vụ")
-                            svg.bi.bi-hexagon(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                                path(fill-rule='evenodd', d='M14 4.577L8 1 2 4.577v6.846L8 15l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z')
-                        a.nav-bg#users.mb-1.p-3(href="/admin/users" data-toggle="tooltip" data-placement="right" title="Người dùng")
-                            svg.bi.bi-person(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
-                                path(d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z')
-                        a.nav-bg#data.mb-1.p-3(href="#" data-toggle="tooltip" data-placement="right" title="Cơ sở dữ liệu")
-                            svg.bi.bi-server(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                                path(fill-rule='evenodd', d='M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4C14.665 5.474 11.68 6.667 8 6.667 4.318 6.667 1.333 5.473 1.333 4V2.667zm0 3.667v3C1.333 10.805 4.318 12 8 12c3.68 0 6.665-1.193 6.667-2.665V6.334c-.43.32-.931.58-1.458.79C11.81 7.684 9.967 8 8 8c-1.967 0-3.81-.317-5.21-.876a6.508 6.508 0 0 1-1.457-.79zm13.334 5.334c-.43.319-.931.578-1.458.789-1.4.56-3.242.876-5.209.876-1.967 0-3.81-.316-5.21-.876a6.51 6.51 0 0 1-1.457-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z')  
-                        a.nav-bg.mb-1.p-3(href="#" data-toggle="tooltip" data-placement="right" title="API")
-                            svg.bi.bi-diagram-2(xmlns='http://www.w3.org/2000/svg', width='1.5em', height='1.5em', fill='currentColor', viewbox='0 0 16 16')
-                                path(fill-rule='evenodd', d='M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM3 11.5A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z')
-
-            //- Content
-            .p-2.bd-highlight
-                block content-left
-                
-            .p-2.flex-grow-1.bd-highlight
-                //- (style="background-color: #46484e;")
-                br
-                block content
-
-            .p-2.bd-highlight
-                block content-right
-
-                
+        .container-fluid
+            .row
+                .col-md-1.p-0
+                    br
+                    br
+                    br
+                    nav#fixed-menu.position-sticky(style={ top:'19%'}).ml-1
+                        .d-inline-flex.flex-column.bd-highlight
+                            a#staffs.bd-highlight.p-3.m-1(href="/admin/staffs" data-toggle="tooltip" data-placement="right" title="Nhân viên")
+                                svg.bi.bi-people(xmlns='http://www.w3.org/2000/svg', width='1.2em', height='1.2em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z')
+                            a#service.bd-highlight.p-3.m-1(href="#" data-toggle="tooltip" data-placement="right" title="Dịch vụ")
+                                svg.bi.bi-hexagon(width='1.2em', height='1.2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                                    path(fill-rule='evenodd', d='M14 4.577L8 1 2 4.577v6.846L8 15l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z')
+                            a#users.bd-highlight.p-3.m-1(href="/admin/users" data-toggle="tooltip" data-placement="right" title="Người dùng")
+                                svg.bi.bi-person(xmlns='http://www.w3.org/2000/svg', width='1.2em', height='1.2em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z')
+                            a#data.bd-highlight.p-3.m-1(href="#" data-toggle="tooltip" data-placement="right" title="Cơ sở dữ liệu")
+                                svg.bi.bi-server(width='1.2em', height='1.2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                                    path(fill-rule='evenodd', d='M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4C14.665 5.474 11.68 6.667 8 6.667 4.318 6.667 1.333 5.473 1.333 4V2.667zm0 3.667v3C1.333 10.805 4.318 12 8 12c3.68 0 6.665-1.193 6.667-2.665V6.334c-.43.32-.931.58-1.458.79C11.81 7.684 9.967 8 8 8c-1.967 0-3.81-.317-5.21-.876a6.508 6.508 0 0 1-1.457-.79zm13.334 5.334c-.43.319-.931.578-1.458.789-1.4.56-3.242.876-5.209.876-1.967 0-3.81-.316-5.21-.876a6.51 6.51 0 0 1-1.457-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z')  
+                            a.bd-highlight.p-3.m-1(href="#" data-toggle="tooltip" data-placement="right" title="API")
+                                svg.bi.bi-diagram-2(xmlns='http://www.w3.org/2000/svg', width='1.2em', height='1.2em', fill='currentColor', viewbox='0 0 16 16')
+                                    path(fill-rule='evenodd', d='M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM3 11.5A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z')
+                .col-md-10
+                    block content
 
         footer
             script(src="/static/admin/js/base.js")

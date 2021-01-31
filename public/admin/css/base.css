@@ -1,51 +1,43 @@
-body {
+body 
+{
   background-color: #202124;
 }
 
 /* Header */
-header {
+header 
+{
   border-bottom: 1px solid #f5e3e085;
   background-color: #202124;
   z-index: 11111;
 }
 
-.header-shadow {
+.header-shadow 
+{
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.308);
 }
 
-.circle-radius:hover {
+.circle-radius:hover 
+{
     background-color: rgba(128, 128, 128, 0.192);
     border-radius: 100%;
 }
 /* /Header */
 
 /* Main menu */
-#fixed-menu {
-  background-color: #202124;
+#fixed-menu 
+{
   z-index: 111111;
 }
 
-#fixed-menu a {
+#fixed-menu a 
+{
   cursor: default;
   color: rgba(255, 255, 255, 0.562);
 }
-/* /Main Menu */
 
-
-
-.add-bg-color {
-  background-color: #463f3a;
+.base-color {
+  color: rgba(255, 255, 255, 0.562);
 }
-
-.nav-item-bgcolor {
-  background-color: #202124;
-}
-
-.nav-bg {
-  background-color: #463f3a;
-}
-
-
 
 /* Design Scrollbar */
 

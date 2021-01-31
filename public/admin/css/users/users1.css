@@ -1,4 +1,5 @@
 /* Design input */
+
 input[type=text] {
   background-color: #26272b;
   border: none;
@@ -16,9 +17,11 @@ input[type=text]:focus {
   background-color: #26272b;
   border-bottom: 1px solid white;
 }
+
 /* /Design input */
 
 /* Placeholder */
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1; /* Firefox */
@@ -31,13 +34,10 @@ input[type=text]:focus {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
 }
+
 /* /Placeholder */
 
 /* Form  */
-select {
-  border: none;
-  height: 30px;
-}
 
 button {
   height: 31px;
@@ -52,29 +52,15 @@ h5 {
   font-size: 25px;
 }
 
+#delete {
+  display: none;
+}
+
+#lable-delete {
+  cursor: pointer
+}
+
 /* /Form */
-
-/* ---------------------- */
-
-#newuser:hover svg{
-  color: rgba(255, 255, 255, 0.616);
-}
-
-#second-menu a {
-  cursor: default;
-  color: rgba(255, 255, 255, 0.726);
-}
-
-#second-menu .nav-item:hover {
-  background-color: rgba(128, 128, 128, 0.192);
-}
-
-#second-menu .nav-item-color {
-  background-color: #463f3a;
-}
- 
-
-
 
 .bg-theme {
   background-color: #26272b;

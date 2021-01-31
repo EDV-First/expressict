@@ -4,19 +4,19 @@ block title
     title Site administrator | Home
     link(rel="stylesheet", href="/static/admin/css/index.css")
 
-block content-left
-    .p-5.m-5
-    
 block content
-
+    include ./includes/breadcrumb.pug
     #icon-app.text-center
-        svg.bi.bi-app(width='10em', height='10em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-            path(fill-rule='evenodd', d='M11 2H5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z')
+        svg.bi.bi-app-indicator(xmlns='http://www.w3.org/2000/svg', width='100', height='100', fill='currentColor', viewbox='0 0 16 16')
+            path(d='M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z')
+            path(d='M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z')
+        br
+        br
+        strong
+            span Chào mừng đến với trang quản trị.
         br
         br
         span Lựa chọn các tác vụ bên trái màn hình &larr;
         br
         span Các tác vụ sẽ được hiển thị tại đây
 
-block content-right
-    .p-5.m-5
